@@ -14,14 +14,14 @@
 #   No use of handlers
 
 - name: configuration
-  hosts: internal
+  hosts: all
   gather_facts: false # remove later! speeds up testing
   become: true
 
   tasks:
   - name: enable repos
     template:
-      src: open_three-tier-app.repo
+      src: ../open_three-tier-app.repo
       dest: /etc/yum.repos.d/open_three-tier-app.repo
       mode: 0644
 
