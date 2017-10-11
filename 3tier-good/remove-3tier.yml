@@ -1,0 +1,10 @@
+---
+# Revese 3 Tier app deployment
+#
+#   Remove all repos
+#   Remove the base 3 tier app packages (haproxy, tomcat etc)
+
+- name: cleaner - delete the the tier app specfic additions
+  hosts: all
+  roles:
+    - cleaner

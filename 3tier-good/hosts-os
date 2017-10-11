@@ -1,0 +1,15 @@
+[jumpbox:vars]
+
+###########################################################################
+### Ansible Vars
+###########################################################################
+timeout=60
+ansible_become=yes
+#ansible_ssh_user=ec2-user
+
+GUID=c252
+
+## These are the appdbi(s) - postgres
+[jumpbox]
+workstation ansible_host=workstation-c252.rhpds.opentlc.com
+

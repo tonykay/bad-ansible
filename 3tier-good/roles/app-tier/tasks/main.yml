@@ -1,0 +1,27 @@
+---
+
+- name: install {{ payload }}
+  yum:
+    name: "{{ payload }}"
+    state: latest
+
+- name: enable {{ payload }} at boot
+  service:
+    name: "{{ payload }}"
+    enabled: yes
+
+- name: create ansible tomcat directory
+  file: 
+   path: /usr/share/tomcat/webapps/ansible
+   state: directory
+
+- name: copy static index.html to tomcat webapps/ansible/index.html
+  template:
+    src: index.html.j2
+    dest: /usr/share/tomcat/webapps/ansible/index.html
+    mode: 0644
+
+- name: restart tomcat
+  service:
+    name: "{{ payload }}"
+    state: restarted

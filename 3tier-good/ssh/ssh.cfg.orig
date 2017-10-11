@@ -1,0 +1,37 @@
+# three tier app on openstack lab env
+
+Host workstation-e6b0.rhpds.opentlc.com
+  Hostname workstation-e6b0.rhpds.opentlc.com
+  IdentityFile ~/.ssh/opentlc_admin_backdoor
+  ForwardAgent yes
+  User cloud-user
+  ControlMaster auto
+  ControlPath /tmp/%h-%r
+  ControlPersist 5m
+  StrictHostKeyChecking no
+
+# example.com = internal Openstack Advanced Networking Lab Environment
+Host *.example.com
+  User root
+  IdentityFile ~/.ssh/openstack-internal
+  ProxyCommand ssh -t -t workstation-e6b0.rhpds.opentlc.com -t -t -W %h:%p
+  StrictHostKeyChecking no
+
+
+# three tier app on three tier app lab env
+
+Host bastion
+  Hostname bastion.e6b0.example.opentlc.com
+  IdentityFile ~/.ssh/ankay-labs.pem
+  ForwardAgent yes
+  User ankay-redhat.com
+  ControlMaster auto
+  ControlPath /tmp/%h-%r
+  ControlPersist 5m
+  StrictHostKeyChecking no
+
+Host *.internal
+  User ec2-user
+  IdentityFile ~/.ssh/a15ekey
+  ProxyCommand ssh bastion.e6b0.example.opentlc.com -W %h:%p
+  StrictHostKeyChecking no
