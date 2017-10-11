@@ -4,8 +4,7 @@
 #   Remove all repos
 #   Remove the base 3 tier app packages (haproxy, tomcat etc)
 
-- name: cleaner - delete the core three tier app specfic additions and configs
+- name: cleaner - delete the the tier app specfic additions
   hosts: all
-  gather_facts: False
   roles:
     - cleaner

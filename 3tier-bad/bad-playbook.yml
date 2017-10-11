@@ -21,7 +21,7 @@
   tasks:
   - name: enable repos
     template:
-      src: ../open_three-tier-app.repo
+      src: ./open_three-tier-app.repo
       dest: /etc/yum.repos.d/open_three-tier-app.repo
       mode: 0644
 
@@ -66,10 +66,34 @@
     service:
       name: tomcat
       enabled: yes
+
+  - name: create ansible tomcat directory
+    file:
+      path: /usr/share/tomcat/webapps/ansible
+      state: directory
+
+  - name: copy static index.html to tomcat webapps/ansible/index.html
+    template:
+      src: index.html.j2
+      dest: /usr/share/tomcat/webapps/ansible/index.html
+      mode: 0644
+
+
   - name: start tomcat
     service:
       name: tomcat
       state: started
+
+- name: index.html on app 1
+  hosts: app1.1901.internal
+  gather_facts: false
+  become: true
+
+  tasks:
+  - name: copy static index.html to tomcat webapps/ansible/index.html
+    template:
+      src: index.html.app1
+      dest: /usr/share/tomcat/webapps/ansible/index.html
 
 - name: deploy postgres
   hosts: apps
