@@ -1,0 +1,6 @@
+- name: cleanup
+  hosts: all
+  gather_facts: false
+  become: true
+  roles:
+    - { role: "./roles/cleaner" }
