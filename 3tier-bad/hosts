@@ -1,3 +1,6 @@
+[all:vars]
+GUID=789f
+
 [internal:vars]
 
 ###########################################################################
@@ -6,8 +9,6 @@
 timeout=60
 ansible_become=yes
 ansible_ssh_user=ec2-user
-
-GUID=1901
 
 [internal:children]
 frontends

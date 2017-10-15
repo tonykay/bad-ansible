@@ -43,8 +43,8 @@
       name: haproxy
       state: started
   - name: configure haproxy
-    copy:
-      src: ./haproxy.cfg
+    template:
+      src: ./haproxy.cfg.j2
       dest: /etc/haproxy/haproxy.cfg
   - name: restart HAproxy
     service:
@@ -103,7 +103,7 @@
   tasks:
   - name: copy static index.html to tomcat webapps/ansible/index.html
     template:
-      src: index.html.appr21
+      src: index.html.app2
       dest: /usr/share/tomcat/webapps/ansible/index.html
 
 - name: deploy postgres
