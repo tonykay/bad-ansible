@@ -78,7 +78,6 @@
       dest: /usr/share/tomcat/webapps/ansible/index.html
       mode: 0644
 
-
   - name: start tomcat
     service:
       name: tomcat

@@ -26,4 +26,4 @@ backend app-servers
     balance roundrobin
     option forwardfor
     server app1 app1.{{GUID}}.internal:8080 cookie app1 check
-    server app2 app2.{{GUID}}.internal:8080 cookie app1 check
+    server app2 app2.{{GUID}}.internal:8080 cookie app2 check
