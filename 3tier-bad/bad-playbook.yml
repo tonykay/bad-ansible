@@ -113,24 +113,18 @@
   tasks:
   - name: install progress
     command: "yum install -y postgresql-server"
-
-  #- name: install postgres
-  #  yum:
-  #    name: postgresql-server
-  #    state: latest
   - name: enable apache at boot
     service:
       name: postgresql
       enabled: yes
-  - name: tell user to finish setting up postgres
-    debug:
-      msg: "Either uncomment the postgres setup or manually login and initialize"
-
- # only run the next 2 tasks once!
-#  - name: initilize postgres
-#    command: postgresql-setup initdb
-#  - name: initilize postgres some more
-#    command: chkconfig postgresql on
+  - stat:
+      path: /var/lib/pgsql/data
+    register: postgres_data_dir
+  - name: initialize postgres
+    command: postgresql-setup initdb
+    when: not postgres_data_dir.stat.exists
+  - name: initilize postgres some more
+    command: chkconfig postgresql on
   - name: start postgres
     service:
       name: postgresql.service
