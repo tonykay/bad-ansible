@@ -118,7 +118,7 @@
       name: postgresql
       enabled: yes
   - stat:
-      path: /var/lib/pgsql/data
+      path: /var/lib/pgsql/data/postgresql.conf
     register: postgres_data_dir
   - name: initialize postgres
     command: postgresql-setup initdb
