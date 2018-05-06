@@ -14,7 +14,7 @@
 #   No use of handlers
 
 - name: configuration
-  hosts: all
+  hosts: all:!bastions
   gather_facts: false # remove later! speeds up testing
   become: true
 
