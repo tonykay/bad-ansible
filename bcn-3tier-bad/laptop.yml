@@ -1,0 +1,31 @@
+---
+- name: setup laptop
+  hosts: bastions
+  gather_facts: false 
+  become: true
+
+  tasks:
+    - name: fetch_repo_file
+      fetch:
+        src: /etc/yum.repos.d/open_three-tier-app.repo
+        dest: ./ 
+        flat: yes
+      tags:
+        - fetch_repo_file
+
+    - name: retrieve ssh key
+      fetch:
+        src: "/root/.ssh/{{ GUID }}key.pem" 
+        dest: ~/.ssh/ 
+        flat: yes
+      tags:
+        - retrieve_ssh_key
+
+    - name: set key permissions
+      file:
+        path: "~/.ssh/{{ GUID }}key.pem"
+        mode: 0400
+      delegate_to: localhost
+      become: false
+      tags:
+        - set_key_permissions
