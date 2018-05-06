@@ -4,15 +4,15 @@
   gather_facts: false
   vars:
     - correct_response: Tomcat on app
-    - domain: example.opentlc.com  
+    - domain: .example.opentlc.com  
 
   tasks:
 
-  - name: check load balancers and app servers for expected response
+  - name: check load balancer for expected response
     uri:
-      url:  http://frontend.{{GUID }}.example.opentlc.com
+      url:  http://frontend.{{GUID }}{{ domain }}
       return_content: yes
     register: result
-    until: '"Tomcat on app" in result.content'
+    until:  correct_response in result.content
     retries: 10
     delay: 1
