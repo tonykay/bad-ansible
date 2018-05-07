@@ -1,5 +1,5 @@
 - name: cleanup
-  hosts: all
+  hosts: internal
   gather_facts: false
   become: true
   roles:

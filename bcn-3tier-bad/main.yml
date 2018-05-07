@@ -12,6 +12,8 @@
 #   Roles - what are roles?
 #   Bare variables
 #   No use of handlers
+#   Unnecessary tasks
+#   Unnecessary play(s)
 
 - name: configuration
   hosts: all:!bastions
