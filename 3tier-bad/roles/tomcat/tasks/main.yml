@@ -17,7 +17,7 @@
 
 - name: create ansible tomcat directory
   file:
-    path: /usr/share/tomcat/webapps/ROOT/ansible
+    path: /usr/share/tomcat/webapps/ansible
     state: directory
     mode: 0755
 
