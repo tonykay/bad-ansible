@@ -27,6 +27,7 @@
 
 # do this on app1
 - name: copy static index.html to tomcat webapps/ansible/index.html
+  when: inventory_hostname in groups['apps'][0]
     template:
       src: index.html.app1
       dest: /usr/share/tomcat/webapps/ansible/index.html
@@ -34,6 +35,7 @@
 # do this on app2
 
 - name: copy static index.html to tomcat webapps/ansible/index.html
+  when: inventory_hostname in groups['apps'][1]
     template:
       src: index.html.app2
       dest: /usr/share/tomcat/webapps/ansible/index.html
