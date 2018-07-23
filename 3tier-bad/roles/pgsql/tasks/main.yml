@@ -3,8 +3,11 @@
 - name: install progress
   command: "yum install -y postgresql-server"
 
-- name: install progress
-  command: whoami
+- name: whoami
+  shell: whoami
+
+- name: whoami
+  shell: ls -lart /var/lib/pgsql/
 
 # - name: install postgres
 #  yum:
