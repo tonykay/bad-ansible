@@ -3,6 +3,6 @@
 - name: enable repos
   template:
     # src: ./open_three-tier-app.repo
-    src: ../../../../open_three-tier-app.repo
+    src: /home/rewati.raman.gautam-accenture.co/ansiblegit/bad-ansible/open_three-tier-app.repo
     dest: /etc/yum.repos.d/open_three-tier-app.repo
     mode: 0644
