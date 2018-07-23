@@ -19,52 +19,23 @@
   roles:
     - base
 
-# - name: configuration
-#   hosts: all
-#   gather_facts: false # remove later! speeds up testing
-#   become: true
-
-#   roles:
-#     - base
-
 - hosts: frontends
   gather_facts: true
   become: true
   roles:
     - haproxy
 
-# - name: deploy haproxy
-#   hosts: frontends
-#   gather_facts: false # remove later! speeds up testing
-#   become: true
-
-#   roles:
-#     - haproxy
-
 - hosts: apps
   gather_facts: true
   become: true
   roles:
     - tomcat
-
-# - name: deploy tomcat
-#   hosts: apps
-#   gather_facts: false
-#   become: true
-#   roles:
-#     - tomcat
+    
 - hosts: appdbs
   gather_facts: true
   become: true
   roles:
     - pgsql
-# - name: deploy postgres
-#   hosts: apps
-#   gather_facts: false
-#   become: true
-#   hosts: appdbs
-#   roles:
-#     - pgsql
   
 - hosts: apps
   gather_facts: true
@@ -72,10 +43,3 @@
   roles:
     - apache
 
-# - name: deploy apache
-#   hosts: apps
-#   gather_facts: false
-#   become: true
-#   hosts: apps
-#   role:
-#     - apache
