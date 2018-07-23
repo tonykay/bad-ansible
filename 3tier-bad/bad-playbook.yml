@@ -13,42 +13,59 @@
 #   Bare variables
 #   No use of handlers
 
-- name: configuration
-  hosts: all
-  gather_facts: false # remove later! speeds up testing
-  become: true
-
+- hosts: all
   roles:
     - base
 
-- name: deploy haproxy
-  hosts: frontends
-  gather_facts: false # remove later! speeds up testing
-  become: true
+# - name: configuration
+#   hosts: all
+#   gather_facts: false # remove later! speeds up testing
+#   become: true
 
+#   roles:
+#     - base
+
+- hosts: frontends
   roles:
     - haproxy
 
-- name: deploy tomcat
-  hosts: apps
-  gather_facts: false
-  become: true
+# - name: deploy haproxy
+#   hosts: frontends
+#   gather_facts: false # remove later! speeds up testing
+#   become: true
+
+#   roles:
+#     - haproxy
+
+- hosts: apps
   roles:
     - tomcat
 
-- name: deploy postgres
-  hosts: apps
-  gather_facts: false
-  become: true
-  hosts: appdbs
+# - name: deploy tomcat
+#   hosts: apps
+#   gather_facts: false
+#   become: true
+#   roles:
+#     - tomcat
+- hosts: appdbs
   roles:
-    - pgsql
+    - tomcat
+# - name: deploy postgres
+#   hosts: apps
+#   gather_facts: false
+#   become: true
+#   hosts: appdbs
+#   roles:
+#     - pgsql
   
-
-- name: deploy apache
-  hosts: apps
-  gather_facts: false
-  become: true
-  hosts: apps
-  role:
+- hosts: apps
+  roles:
     - apache
+    
+# - name: deploy apache
+#   hosts: apps
+#   gather_facts: false
+#   become: true
+#   hosts: apps
+#   role:
+#     - apache
