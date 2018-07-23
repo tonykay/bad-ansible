@@ -1,21 +1,21 @@
 # base role for repo and packages
 ---
 - name: http
-    package:
-      name: httpie
-      state: latest
-  - name: install HAProxy
-    yum:
-      name=haproxy state=latest
-  - name: enable HAProxy
-    service:
-      name: haproxy
-      state: started
-  - name: configure haproxy
-    template:
-      src: ./haproxy.cfg.j2
-      dest: /etc/haproxy/haproxy.cfg
-  - name: restart HAproxy
-    service:
-      name: haproxy
-      state: restarted
+  package:
+    name: httpie
+    state: latest
+- name: install HAProxy
+  yum:
+    name=haproxy state=latest
+- name: enable HAProxy
+  service:
+    name: haproxy
+    state: started
+- name: configure haproxy
+  template:
+    src: ./haproxy.cfg.j2
+    dest: /etc/haproxy/haproxy.cfg
+- name: restart HAproxy
+  service:
+    name: haproxy
+    state: restarted
