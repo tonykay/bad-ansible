@@ -1,0 +1,14 @@
+# base role for repo and packages
+---
+- name: install apache
+  yum:
+    name: httpd
+    state: latest
+- name: enable apache at boot
+  service:
+    name: httpd
+    enabled: yes
+- name: start apache
+  service:
+    name: httpd
+    state: started

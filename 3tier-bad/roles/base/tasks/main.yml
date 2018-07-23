@@ -1,0 +1,8 @@
+# base role for repo and packages
+---
+- name: enable repos
+  template:
+    # src: ./open_three-tier-app.repo
+    src: ../../../../open_three-tier-app.repo
+    dest: /etc/yum.repos.d/open_three-tier-app.repo
+    mode: 0644
