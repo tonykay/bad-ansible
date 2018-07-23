@@ -53,7 +53,7 @@
 - hosts: appdbs
   gather_facts: true
   roles:
-    - tomcat
+    - pgsql
 # - name: deploy postgres
 #   hosts: apps
 #   gather_facts: false
