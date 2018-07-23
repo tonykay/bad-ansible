@@ -15,6 +15,7 @@
 
 - hosts: all
   gather_facts: true
+  become: true
   roles:
     - base
 
@@ -28,6 +29,7 @@
 
 - hosts: frontends
   gather_facts: true
+  become: true
   roles:
     - haproxy
 
@@ -41,6 +43,7 @@
 
 - hosts: apps
   gather_facts: true
+  become: true
   roles:
     - tomcat
 
@@ -52,6 +55,7 @@
 #     - tomcat
 - hosts: appdbs
   gather_facts: true
+  become: true
   roles:
     - pgsql
 # - name: deploy postgres
@@ -64,6 +68,7 @@
   
 - hosts: apps
   gather_facts: true
+  become: true
   roles:
     - apache
 

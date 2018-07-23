@@ -17,7 +17,7 @@
 
 - name: Check if PostgreSQL database is initialized.
   stat:
-    path: var/lib/PG_VERSION"
+    path: var/lib/PG_VERSION
   register: pgdata_dir_version
 
  # only run the next 2 tasks once!
