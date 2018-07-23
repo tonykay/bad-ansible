@@ -21,10 +21,15 @@
   debug:
     msg: "Either uncomment the postgres setup or manually login and initialize"
 
-# - name: Check if PostgreSQL database is initialized.
+# - name: stat ansible configuration file
 #   stat:
-#     path: var/lib/PG_VERSION
-#   register: pgdata_dir_version
+#     path: "/var/lib/pgsql/data"
+#   register: stat_ansible_config
+
+- name: Check if PostgreSQL database is initialized.
+  stat:
+    path: "/var/lib/pgsql/data"
+  register: pgdata_dir_version
 
  # only run the next 2 tasks once!
 # - name: initilize postgres
@@ -32,13 +37,13 @@
 # - name: initilize postgres some more
 #   command: chkconfig postgresql on
 
-# - name: Ensure PostgreSQL database is initialized.
-#   command: postgresql-setup initdb
-#   when: not pgdata_dir_version.stat.exists
+- name: Ensure PostgreSQL database is initialized.
+  command: postgresql-setup initdb
+  when: not pgdata_dir_version.stat.exists
 
-# - name: Ensure PostgreSQL database is Checkconfig on.
-#   command: chkconfig postgresql on
-#   when: not pgdata_dir_version.stat.exists
+- name: Ensure PostgreSQL database is Checkconfig on.
+  command: chkconfig postgresql on
+  when: not pgdata_dir_version.stat.exists
 
 - name: start postgres
   service:
