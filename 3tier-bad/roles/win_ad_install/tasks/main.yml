@@ -11,7 +11,7 @@
      domain_admin_password: jVMijRwLbI02gFCo2xkjlZ9lxEA7bm7zgg==
      safe_mode_password: jVMijRwLbI02gFCo2xkjlZ9lxEA7bm7zgg==
      state: domain_controller
-    log_path: c:\ansible_win_domain_controller.txt
+     log_path: c:\ansible_win_domain_controller.txt
 
 
 - name: Reboot win machine
