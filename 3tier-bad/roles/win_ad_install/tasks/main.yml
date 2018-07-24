@@ -23,10 +23,10 @@
 - name: Domain Controller
   # include_vars: ad.yml
   win_domain_controller: 
-     dns_domain_name: ad1.${GUID}.example.opentlc.com
-     domain_admin_user: admin@{{ ad_domain_name}}
-     domain_admin_password: jVMijRwLbI02gFCo2xkjlZ9lxEA7bm7zgg==
-     safe_mode_password: jVMijRwLbI02gFCo2xkjlZ9lxEA7bm7zgg==
+     dns_domain_name: "{{ad_domain_name}}"
+     domain_admin_user: "{{ad_admin_user }"
+     domain_admin_password: "{{ad_safe_mode_password}}"
+     safe_mode_password: "{{ad_safe_mode_password}}"
      state: domain_controller
      log_path: c:\ansible_win_domain_controller.txt
 
