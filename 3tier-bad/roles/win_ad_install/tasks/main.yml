@@ -1,10 +1,15 @@
 ---
+# - name: Install AD-Domain-Services
+#   win_feature: >
+#     name=ad1.${GUID}.example.opentlc.com
+#     include_management_tools=yes
+#     include_sub_features=yes
+#     state=present
+
 - name: Install AD-Domain-Services
-  win_feature: 
-    name=ad1.${GUID}.example.opentlc.com
-    include_management_tools=yes
-    include_sub_features=yes
-    state=present
+  win_feature:
+    name: AD-Domain-Services
+    state: present
 
 - name: Domain Controller
   domain_controller: 
