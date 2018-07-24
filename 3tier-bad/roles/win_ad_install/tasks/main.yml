@@ -2,7 +2,7 @@
 
 - name: Include vars 
   include_vars:
-    file: ad.yaml
+    file: ad.yml
 
 
 - name: Install AD-Domain-Services
