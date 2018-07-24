@@ -24,7 +24,7 @@
   # include_vars: ad.yml
   win_domain_controller: 
      dns_domain_name: "{{ad_domain_name}}"
-     domain_admin_user: "{{ad_admin_user }"
+     domain_admin_user: "{{ad_admin_user }}"
      domain_admin_password: "{{ad_safe_mode_password}}"
      safe_mode_password: "{{ad_safe_mode_password}}"
      state: domain_controller
