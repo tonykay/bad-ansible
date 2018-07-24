@@ -14,6 +14,7 @@
     scope: "{{ item.group_scope }}"
     state: present
   with_items: "{{ user_info }}" 
+  
 - name: Create AD User
   win_domain_user:
     name: "{{ item.name }}"
