@@ -1,0 +1,10 @@
+---
+# Bad ansible! This playbook is an example of poor/bad practices!
+
+- hosts: windows
+  gather_facts: true
+  become: true
+  roles:
+    - win_service_config
+
+
