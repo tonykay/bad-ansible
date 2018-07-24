@@ -17,7 +17,7 @@
   when: ansible_distribution  == "Microsoft Windows Server 2012 R2 Standard"
   win_service:
     name: "{{service_name}}"
-    state: start
+    state: started
 
 - name: Firewall rule to allow sshd on TCP port 22
   win_firewall_rule:
