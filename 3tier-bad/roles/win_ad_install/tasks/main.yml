@@ -12,7 +12,7 @@
     state: present
 
 - name: Domain Controller
-  domain_controller: 
+  win_domain_controller: 
      dns_domain_name: ad1.${GUID}.example.opentlc.com
      domain_admin_user: admin@{{ ad_domain_name}}
      domain_admin_password: jVMijRwLbI02gFCo2xkjlZ9lxEA7bm7zgg==
