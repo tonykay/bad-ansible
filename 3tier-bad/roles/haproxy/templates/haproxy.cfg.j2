@@ -32,5 +32,6 @@ backend app-servers
     {% for server in groups.apps %}
       server app{{ loop.index }} {{ inventory_hostname }}:8080 cookie app{{ loop.index }}  check
     {%endfor %}
+    
     # server app1 app1.{{GUID}}.internal:8080 cookie app1 check
     # server app2 app2.{{GUID}}.internal:8080 cookie app2 check
