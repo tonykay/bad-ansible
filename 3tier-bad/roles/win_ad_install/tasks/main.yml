@@ -20,9 +20,9 @@
 #      state: domain_controller
 #      log_path: c:\ansible_win_domain_controller.txt
 
-- name: Domain Controller
-  # include_vars: ad.yml
-  win_domain_controller: 
+ - name: Domain Controller
+#   # include_vars: ad.yml
+   win_domain: 
      dns_domain_name: "{{ad_domain_name}}"
      domain_admin_user: "{{ad_admin_user }}"
      domain_admin_password: "{{ad_safe_mode_password}}"
