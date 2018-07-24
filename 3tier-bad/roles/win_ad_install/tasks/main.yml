@@ -1,0 +1,21 @@
+---
+- name: Install AD-Domain-Services
+  win_feature: 
+    name=ad1.${GUID}.example.opentlc.com
+    include_management_tools=yes
+    include_sub_features=yes
+    state=present
+
+- name: Domain Controller
+  domain_controller: 
+     dns_domain_name: ad1.${GUID}.example.opentlc.com
+     domain_admin_user: admin@{{ ad_domain_name}}
+     domain_admin_password: jVMijRwLbI02gFCo2xkjlZ9lxEA7bm7zgg==
+     safe_mode_password: jVMijRwLbI02gFCo2xkjlZ9lxEA7bm7zgg==
+
+- name: Reboot win machine
+  win_reboot:
+    reboot_timeout: 3600
+
+- name: Reboot win machine
+  shell: nltest /dclist:"{{ ad_domain_name }}" 
