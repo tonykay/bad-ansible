@@ -1,0 +1,44 @@
+---
+
+- name: Include vars 
+  include_vars:
+    file: main.yml
+
+- name: Include vars 
+  command: pip upgrade ansible 2.4.0
+
+# tasks file for roles/win_ad_user
+- name: Create windows domain group
+  win_domain_group:
+    name: "{{ item.group_name }}"
+    scope: "{{ item.group_scope }}"
+    state: present
+  with_items: "{{ user_info }}" 
+- name: Create AD User
+  win_domain_user:
+    name: "{{ item.name }}"
+    firstname: "{{item.firstname }}"
+    surname: "{{ item.surname }}"
+    password: "{{ item.password }}"
+    state: present
+    email: '"{{ item.name }}"@ad1.766a.example.opentlc.com'
+    groups:
+      - "{{ item.group_name }}"
+  with_items: "{{ user_info }}"
+
+# - name: Install Packages
+#   when: ansible_distribution  == "Microsoft Windows Server 2012 R2 Standard"
+#   win_domain_user:
+#     name: "{{name}}"
+#     firstname: "{{firstname}}"
+#     surname: "{{surname}}"
+#     company: "{{company}}"
+#     password: "{{password}}"
+#     state: latest
+#     groups:
+#       - "{{groups}}"
+#     # name: "{{ item }}"
+#   with_items:
+#      - "{{user_info}}"
+
+
