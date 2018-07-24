@@ -1,0 +1,32 @@
+---
+
+- name: Include vars 
+  include_vars:
+    file: main.yml
+
+- name: Install Packages
+  when: ansible_distribution  == "Microsoft Windows Server 2012 R2 Standard"
+  win_chocolatey:
+    name: "{{ item }}"
+    params: "{{ parameters }}"
+    state: latest
+  with_items:
+     - "{{package_name}}"
+
+- name: Enable Service 
+  when: ansible_distribution  == "Microsoft Windows Server 2012 R2 Standard"
+  win_service:
+    name: "{{service_name}}"
+    state: start
+
+- name: Firewall rule to allow sshd on TCP port 22
+  win_firewall_rule:
+    name: opensshd
+    localport: 22
+    action: allow
+    direction: in
+    protocol: tcp
+    state: present
+    enabled: yes
+
+
