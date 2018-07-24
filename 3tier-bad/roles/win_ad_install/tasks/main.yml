@@ -6,13 +6,21 @@
 
 - name: Domain Controller
   win_domain_controller: 
-     dns_domain_name: ad1.${GUID}.example.opentlc.com
-     domain_admin_user: admin@{{ ad_domain_name}}
+     dns_domain_name: ad1.766a.example.opentlc.com
+     domain_admin_user: admin@ad1.766a.example.opentlc.com
      domain_admin_password: jVMijRwLbI02gFCo2xkjlZ9lxEA7bm7zgg==
      safe_mode_password: jVMijRwLbI02gFCo2xkjlZ9lxEA7bm7zgg==
      state: domain_controller
      log_path: c:\ansible_win_domain_controller.txt
 
+# - name: Domain Controller
+#   win_domain_controller: 
+#      dns_domain_name: ad1.${GUID}.example.opentlc.com
+#      domain_admin_user: admin@{{ ad_domain_name}}
+#      domain_admin_password: jVMijRwLbI02gFCo2xkjlZ9lxEA7bm7zgg==
+#      safe_mode_password: jVMijRwLbI02gFCo2xkjlZ9lxEA7bm7zgg==
+#      state: domain_controller
+#      log_path: c:\ansible_win_domain_controller.txt
 
 - name: Reboot win machine
   win_reboot:
