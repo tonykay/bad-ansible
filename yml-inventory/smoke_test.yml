@@ -1,0 +1,18 @@
+---
+- name: smoke test services
+  hosts: frontends
+  gather_facts: false
+  vars:
+    - correct_response: Tomcat on app
+    - domain: .example.opentlc.com  
+
+  tasks:
+
+  - name: check load balancer for expected response
+    uri:
+      url:  http://frontend.{{GUID }}{{ domain }}
+      return_content: yes
+    register: result
+    until:  correct_response in result.content
+    retries: 10
+    delay: 1
