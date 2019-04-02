@@ -1,0 +1,29 @@
+== Overview
+
+Bad Ansible is a deliberately poorly constructed ansible project designed to give students a basic project to cleanup, refactor, and improve.
+
+
+=== Structure
+
+[source,bash]
+----
+.
+├── 3tier-bad
+│   ├── ansible.cfg                   <1>
+│   ├── bad-playbook.yml
+│   ├── cleanup.yml
+│   ├── haproxy.cfg.j2
+│   ├── hosts
+│   ├── index.html.app1
+│   ├── index.html.app2
+│   ├── index.html.j2
+│   ├── purge.yml
+│   ├── roles
+│   │   └── cleaner
+│   │       └── tasks
+│   │           └── main.yml
+│   └── ssh.cfg
+└── README.adoc
+----
+
+. Simple ansible.cfg
