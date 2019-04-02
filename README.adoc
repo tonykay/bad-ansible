@@ -10,13 +10,13 @@ Bad Ansible is a deliberately poorly constructed ansible project designed to giv
 .
 ├── 3tier-bad
 │   ├── ansible.cfg                   <1>
-│   ├── bad-playbook.yml
-│   ├── cleanup.yml
-│   ├── haproxy.cfg.j2
-│   ├── hosts
-│   ├── index.html.app1
-│   ├── index.html.app2
-│   ├── index.html.j2
+│   ├── cleanup.yml                   <2>
+│   ├── haproxy.cfg.j2                <3>
+│   ├── hosts                         <4>
+│   ├── index.html.app1               <5>
+│   ├── index.html.app2               <5>
+│   ├── index.html.j2                 <5>
+│   ├── main.yml                      <6>
 │   ├── purge.yml
 │   ├── roles
 │   │   └── cleaner
