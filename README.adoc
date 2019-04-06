@@ -2,6 +2,7 @@
 
 Bad Ansible is a deliberately poorly constructed ansible project designed to give students a basic project to cleanup, refactor, and improve.
 
+`3tier-bad/main.yml` is playbook currently consisting of 
 
 === Structure
 
@@ -17,7 +18,6 @@ Bad Ansible is a deliberately poorly constructed ansible project designed to giv
 │   ├── index.html.app2               <5>
 │   ├── index.html.j2                 <5>
 │   ├── main.yml                      <6>
-│   ├── purge.yml
 │   ├── roles
 │   │   └── cleaner
 │   │       └── tasks
@@ -27,3 +27,10 @@ Bad Ansible is a deliberately poorly constructed ansible project designed to giv
 ----
 
 . Simple ansible.cfg
+. Conveneince playbook that removes the 3tier app - use to retest your work
+. A badly written jinja2 template *HINT* consider looping on the apps group
+. inventory file - referenced from `ansible.cfg`
+. 
+
+
+=== Potential strategies
