@@ -1,3 +1,6 @@
+[all:vars]
+GUID="{{ lookup( 'env', 'GUID') }}"
+
 [frontends] # These are the frontend servers
 frontend1 ansible_host=frontend1."{{ GUID }}".internal
 
@@ -14,6 +17,5 @@ apps
 appdbs
 
 [internal:vars]
-timeout=60
-ansible_become=yes
-ansible_user=ec2-user
+#timeout=60
+#ansible_become=yes
