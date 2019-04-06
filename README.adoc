@@ -1,8 +1,41 @@
 == Overview
 
-Bad Ansible is a deliberately poorly constructed ansible project designed to give students a basic project to cleanup, refactor, and improve.
+Bad Ansible is a deliberately poorly constructed ansible project designed to give students a basic project to cleanup, refactor, and improve. It represents a newcomer's, aka _newbie_, approach to hacking together a functional playbook to deploy a three tier app.
 
-`3tier-bad/main.yml` is playbook currently consisting of 
+The entry point, `main.yml` contains multiple _good enough_ plays, and some redundant ones.
+
+=== Goal of `main.yml`
+
+Set up an application that:
+
+* Sets up a `frontend1` haproxy server which load balances requests to http://frontend1.<GUID>.example.opentlc.com.
+** Requests to `frontend1` come in on port 80
+** Load balance requests to servers in the group `apps`, listening on port 8080
+* Set up one or more tomcat servers, the group `apps`, to:
+** Serve the included HTML content from <INSERT PATH HERE>
+* Install postgres on all servers in the group appdbs
+
+
+=== Tips
+
+* Make sure you have read the *Goals* section above and understand the desired architecture
+* There are redundant plays within `main.yml`
+* Would
+* You should be able to run your solution multiple times, not just once
+* You are free to restructure your solution in any way
+
+
+NOTE: Any plays or tasks not related to the above are therefore redundant and can be removed.
+
+ to deploy a three tier app
+
+`3tier-bad/main.yml` is playbook currently consisting of
+
+
+=== Usage
+
+
+. Set up the environmental variable GUID to
 
 === Structure
 
@@ -27,10 +60,10 @@ Bad Ansible is a deliberately poorly constructed ansible project designed to giv
 ----
 
 . Simple ansible.cfg
-. Conveneince playbook that removes the 3tier app - use to retest your work
+. Convenience playbook that removes the 3tier app - use to retest your work
 . A badly written jinja2 template *HINT* consider looping on the apps group
 . inventory file - referenced from `ansible.cfg`
-. 
+.
 
 
 === Potential strategies
