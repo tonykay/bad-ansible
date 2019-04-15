@@ -27,43 +27,58 @@ Set up an application that:
 
 NOTE: Any plays or tasks not related to the above are therefore redundant and can be removed.
 
- to deploy a three tier app
+TIP: Don't rename any of the ansible groups: `frontends`, `apps`, `appdbs` - later labs require these!
 
 `3tier-bad/main.yml` is playbook currently consisting of
 
 
 === Usage
 
-
-. Set up the environmental variable GUID to
+. Set up the environmental variable GUID to your GUID
+[source,bash]
+----
+export GUID=abcd
+----
+. Execute your main wrapping palaybook
+[source,bash]
+----
+ ansible-playbook main.yml
+----
 
 === Structure
 
 [source,bash]
 ----
 .
-├── 3tier-bad
-│   ├── ansible.cfg                   <1>
-│   ├── cleanup.yml                   <2>
-│   ├── haproxy.cfg.j2                <3>
-│   ├── hosts                         <4>
-│   ├── index.html.app1               <5>
-│   ├── index.html.app2               <5>
-│   ├── index.html.j2                 <5>
-│   ├── main.yml                      <6>
-│   ├── roles
-│   │   └── cleaner
-│   │       └── tasks
-│   │           └── main.yml
-│   └── ssh.cfg
-└── README.adoc
+├── README.adoc                       <1>
+├── ansible.cfg                       <2>
+├── cleanup.yml                       <3>
+├── haproxy.cfg.j2                    <4>
+├── hosts                             <5>
+├── index.html.app1                   <6>
+├── index.html.app2                   <6>
+├── index.html.j2                     <6>
+├── main.yml                          <7>
+└── ssh.cfg                           <8>
 ----
 
+. This README file
 . Simple ansible.cfg
 . Convenience playbook that removes the 3tier app - use to retest your work
-. A badly written jinja2 template *HINT* consider looping on the apps group
+. A badly written jinja2 template for HAProxy - *HINTS*
+** This should loop over the apps group
+** Perhaps the Tomcat port should be a variable?
 . inventory file - referenced from `ansible.cfg`
-.
+** Note the use of a lookup in line 2, if you prefer consider:
+** Hard coding it `GUID=abcd` or passing it in via `-e GUID=abcd`.
 
 
 === Potential strategies
+
+3 directories, 11 files
+
+
+=== BONUS
+
+
+
