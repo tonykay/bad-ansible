@@ -47,7 +47,7 @@ export GUID=abcd
 * If necessary, e.g. executing from a remote *control node*, install the right key(s)
 +
 NOTE: You can easily test your chosen `ssh` config file e.g. `ssh -F ssh.cfg app1` etc
-. Execute your main wrapping palaybook
+. Execute your main wrapping playbook
 [source,bash]
 ----
  ansible-playbook main.yml
@@ -67,7 +67,8 @@ NOTE: You can easily test your chosen `ssh` config file e.g. `ssh -F ssh.cfg app
 ├── index.html.app2                   <6>
 ├── index.html.j2                     <6>
 ├── main.yml                          <7>
-└── ssh.cfg                           <8>
+├── ssh-bastion.cfg                   <8>
+└── ssh-laptop.cfg                    <9>
 ----
 
 . This README file
@@ -79,14 +80,20 @@ NOTE: You can easily test your chosen `ssh` config file e.g. `ssh -F ssh.cfg app
 . inventory file - referenced from `ansible.cfg`
 ** Note the use of a lookup in line 2, if you prefer consider:
 ** Hard coding it `GUID=abcd` or passing it in via `-e GUID=abcd`.
+. Too many index.html files?
+. Main entry point
+. `ssh` configuration file for working off a `bastion` host
+. `ssh` configuration file for working off a laptop or remote *control node*
 
 
 === Potential strategies
 
-3 directories, 11 files
+* Divide and Conquer
+. Break `main.yml` into individual plays
+. Discard the redundant ones
+. Wrap in a `main.yml` or similar using `import_playbooks:`
 
-
-=== BONUS
-
-
-
+* Role Play
+. Identify the key roles e.g. common, frontends, apps, database etc
+. Convert the relevant plays into roles
+. Create wrapping playbook with multiple *plays* invoking *roles* on *groups*
