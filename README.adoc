@@ -4,7 +4,7 @@ Bad Ansible is a deliberately poorly constructed ansible project designed to giv
 
 The entry point, `main.yml` contains multiple _good enough_ plays, and some redundant ones.
 
-=== Goal of `main.yml`
+=== Goal of *Bad Ansible*
 
 Set up an application that:
 
@@ -12,15 +12,15 @@ Set up an application that:
 ** Requests to `frontend1` come in on port 80
 ** Load balance requests to servers in the group `apps`, listening on port 8080
 * Set up one or more tomcat servers, the group `apps`, to:
-** Serve the included HTML content from <INSERT PATH HERE>
+** Serve the included HTML content from ` /usr/share/tomcat/webapps/ROOT/index.html`
 * Install postgres on all servers in the group appdbs
 
+*Nothing else matters* i.e. you can get rid of it!
 
 === Tips
 
 * Make sure you have read the *Goals* section above and understand the desired architecture
 * There are redundant plays within `main.yml`
-* Would
 * You should be able to run your solution multiple times, not just once
 * You are free to restructure your solution in any way
 
@@ -29,16 +29,24 @@ NOTE: Any plays or tasks not related to the above are therefore redundant and ca
 
 TIP: Don't rename any of the ansible groups: `frontends`, `apps`, `appdbs` - later labs require these!
 
-`3tier-bad/main.yml` is playbook currently consisting of
 
 
 === Usage
 
 . Set up the environmental variable GUID to your GUID
++
 [source,bash]
 ----
 export GUID=abcd
 ----
+. Edited your `ansible.cfg` depending if you are executing on `bastion` or remotely
+* Pay attention to the value of `ssh_args`
+. Configure your _chosen_ `ssh` config file
+* Set the correct user
+* Set the correct key(s)
+* If necessary, e.g. executing from a remote *control node*, install the right key(s)
++
+NOTE: You can easily test your chosen `ssh` config file e.g. `ssh -F ssh.cfg app1` etc
 . Execute your main wrapping palaybook
 [source,bash]
 ----
