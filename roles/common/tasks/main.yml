@@ -1,0 +1,2 @@
+---
+- include_tasks: yum-repos.yml

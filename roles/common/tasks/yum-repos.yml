@@ -1,0 +1,6 @@
+---
+- name: enable repos
+  template:
+    src: open_three-tier-app.repo.j2
+    dest: /etc/yum.repos.d/open_three-tier-app.repo
+    mode: u=rw,go=r

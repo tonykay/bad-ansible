@@ -13,17 +13,13 @@
 #   Bare variables
 #   No use of handlers
 
-- name: configuration
+- name: Common configuration
   hosts: all
   gather_facts: false # remove later! speeds up testing
   become: true
+  roles:
+  - common
 
-  tasks:
-  - name: enable repos
-    template:
-      src: ./open_three-tier-app.repo
-      dest: /etc/yum.repos.d/open_three-tier-app.repo
-      mode: 0644
 
 - name: deploy haproxy
   hosts: frontends
