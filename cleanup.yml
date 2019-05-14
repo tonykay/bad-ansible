@@ -34,4 +34,16 @@
       file:
         path: /tmp/index.html
         state: absent
+
+- name: Cleanup Postgres Data
+  hosts: appdbs
+  gather_facts: true
+  become: true
+  tasks:
+  - name: Remove postgres data directory
+    file:
+      #Default location for RHEL
+      path: /var/lib/pgsql
+      state: absent
+
 ...
