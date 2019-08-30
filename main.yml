@@ -150,7 +150,7 @@
     service:
       name: httpd
       enabled: yes
-  - name: start apache
-    service:
-      name: httpd
-      state: started
+#  - name: start apache
+#    service:
+#      name: httpd
+#      state: started
