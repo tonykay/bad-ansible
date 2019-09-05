@@ -125,6 +125,12 @@
   - name: tell user to finish setting up postgres
     debug:
       msg: "Either uncomment the postgres setup or manually login and initialize"
+ # Version File Created on initdb
+# - name: Get Data File info
+#   stat:
+#    path: "/var/lib/pgsql/data/PG_VERSION"
+#  register: pg_version
+
 
  # only run the next 2 tasks once!
 #  - name: initilize postgres
