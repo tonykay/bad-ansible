@@ -1,12 +1,12 @@
 [frontends] 
-frontend1 ansible_host=frontend1."{{ GUID }}".internal
+frontend1 ansible_host=frontend1."{{ GUID }}".example.opentlc.com
 
 [apps] 
-app1 ansible_host=app1."{{ GUID }}".internal
-app2 ansible_host=app2."{{ GUID }}".internal
+app1 ansible_host=app1."{{ GUID }}".example.opentlc.com
+app2 ansible_host=app2."{{ GUID }}".example.opentlc.com
 
 [appdbs] 
-appdb1 ansible_host=appdb1."{{ GUID }}".internal
+appdb1 ansible_host=appdb1."{{ GUID }}".example.opentlc.com
 
 [internal:children]
 frontends
@@ -15,3 +15,6 @@ appdbs
 
 [internal:vars]
 GUID="{{ lookup('env', 'GUID') }}"
+ansible_user=ec2-user
+ansible_ssh_common_args="-o StrictHostKeyChecking=no"
+ansible_ssh_private_key_file="~/.ssh/1315key.pem"
