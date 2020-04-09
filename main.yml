@@ -31,21 +31,26 @@
   become: true
 
   tasks:
-  - name: http
-    package:
-      name: httpie
-      state: latest
-  - name: install HAProxy
+  - name: Install packages
     yum:
-      name=haproxy state=latest
+      name:
+        - haproxy
+        - python2-httpie
+      state: latest
+
+  - name: configure haproxy
+    template:
+      src: haproxy.cfg.j2
+      dest: /etc/haproxy/haproxy.cfg
+    notify: restart HAproxy
+
   - name: enable HAProxy
     service:
       name: haproxy
       state: started
-  - name: configure haproxy
-    template:
-      src: ./haproxy.cfg.j2
-      dest: /etc/haproxy/haproxy.cfg
+      enabled: true
+
+  handlers:
   - name: restart HAproxy
     service:
       name: haproxy
