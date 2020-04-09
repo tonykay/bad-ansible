@@ -20,10 +20,10 @@
 
   tasks:
   - name: enable repos
-    template:
-      src: ./open_three-tier-app.repo
+    copy:
+      src: open_three-tier-app.repo
       dest: /etc/yum.repos.d/open_three-tier-app.repo
-      mode: 0644
+      mode: u=rw,g=r,o=r
 
 - name: deploy haproxy
   hosts: frontends
