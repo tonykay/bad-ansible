@@ -1,2 +1,6 @@
 ---
 # handlers file for frontend-tier
+- name: status haproxy started
+  service:
+    name: haproxy
+    state: started

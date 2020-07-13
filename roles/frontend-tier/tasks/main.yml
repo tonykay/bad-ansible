@@ -1,2 +1,31 @@
 ---
 # tasks file for frontend-tier
+- name: deploy haproxy
+  hosts: frontends
+  gather_facts: false # remove later! speeds up testing
+  become: true
+
+- name: http
+  package:
+    name: httpie
+    state: latest
+
+- name: install HAProxy
+  yum:
+    name: haproxy
+    state: latest
+
+- name: enable HAProxy
+  service:
+    name: haproxy
+    enabled: yes
+
+- name: configure haproxy
+  template:
+    src: ./haproxy.cfg.j2
+    dest: /etc/haproxy/haproxy.cfg
+
+- name: restart HAproxy
+  service:
+    name: haproxy
+    state: restarted
