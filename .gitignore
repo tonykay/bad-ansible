@@ -1,5 +1,4 @@
 1901key.pem
 */env
 *.pem
-*/open_three-tier-app.repo
-
+.vscode
