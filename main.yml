@@ -27,15 +27,18 @@
 
 - name : setup for db-tier
   hosts: frontends 
+  become: true
   roles:
     - {name: db-tier}
 
 - name : setup for app-tier
   hosts: apps
+  become: true
   roles:
     - {name: app-tier}
 
 - name : setup for frontend-tier
   hosts: frontends
+  become: true
   roles:
     - {name: frontend-tier}

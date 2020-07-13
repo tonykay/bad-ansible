@@ -1,13 +1,9 @@
 ---
 # tasks file for db-tier
-- name: deploy postgres
-  hosts: apps
-  gather_facts: false
-  become: true
-  hosts: appdbs
-  tasks:
-  - name: install progress
-    command: "yum install -y postgresql-server"
+- name: install postgres
+  package:
+    name: postgresql-server
+    state: latest
 
   #- name: install postgres
   #  yum:
@@ -15,7 +11,7 @@
   #    state: latest
 - name: enable apache at boot
   service:
-    name: postgresql
+    name: postgresql.service
     enabled: yes
       
 #- name: tell user to finish setting up postgres
