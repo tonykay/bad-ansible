@@ -1,2 +1,4 @@
 ---
 # vars file for app-tier
+package_name: tomcat
+webroot_dir: /usr/share/tomcat/webapps/ROOT

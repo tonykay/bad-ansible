@@ -1,29 +1,9 @@
 ---
-# Bad ansible! This playbook is an example of poor/bad practices!
-# Bad practices may include:
-#
-#   Poor formatting and structure
-#   Poor use of YAML - but good enough to parse
-#   Inconsistent style
-#   Incorrect use of modules
-#   Poor module choice
-#   Unclear names
-#   Hard coding / poor use of variables
-#   Roles - what are roles?
-#   Bare variables
-#   No use of handlers
-
-- name: configuration
+- name : setup for all server
   hosts: all
-  gather_facts: false # remove later! speeds up testing
   become: true
-
-  tasks:
-  - name: enable repos
-    template:
-      src: ./open_three-tier-app.repo
-      dest: /etc/yum.repos.d/open_three-tier-app.repo
-      mode: 0644
+  roles: 
+    - {name: common}
 
 - name : setup for db-tier
   hosts: frontends 

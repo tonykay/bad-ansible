@@ -1,17 +1,13 @@
 ---
 # tasks file for db-tier
-- name: install postgres
+- name: install {{ package_name }}
   package:
-    name: postgresql-server
+    name: "{{ package_name }}"
     state: latest
 
-  #- name: install postgres
-  #  yum:
-  #    name: postgresql-server
-  #    state: latest
-- name: enable apache at boot
+- name: enable {{ package_name }} at boot
   service:
-    name: postgresql.service
+    name: "{{ service_name }}"
     enabled: yes
       
 #- name: tell user to finish setting up postgres
@@ -19,13 +15,13 @@
 #    msg: "Either uncomment the postgres setup or manually login and initialize"
 
 # only run the next 2 tasks once!
-- name: initilize postgres
-  command: postgresql-setup initdb
+#- name: initilize postgres
+#  command: postgresql-setup initdb
+#
+#- name: initilize postgres some more
+#  command: chkconfig postgresql on
 
-- name: initilize postgres some more
-  command: chkconfig postgresql on
-
-- name: start postgres
+- name: start {{ package_name }}
   service:
-    name: postgresql.service
+    name: "{{ service_name }}"
     state: started

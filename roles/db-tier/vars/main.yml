@@ -1,2 +1,4 @@
 ---
 # vars file for db-tier
+package_name: postgresql-server
+service_name: postgresql.service

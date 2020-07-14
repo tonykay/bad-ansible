@@ -1,2 +1,3 @@
 ---
 # vars file for frontend-tier
+package_name: haproxy
